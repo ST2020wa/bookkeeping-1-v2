@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
+    <Chart :options="x" />
     <ol v-if="groupedList.length>0">
       <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">{{ beautify(group.title) }} <span> ¥ {{group.total}}</span> </h3>
@@ -16,7 +17,7 @@
       </li>
     </ol>
     <div v-else class="noResult">
-      目前暂无相关记录～>_<～
+      Oops!目前暂无相关记录～
     </div>
   </Layout>
 </template>
@@ -28,13 +29,15 @@ import Tabs from '@/components/Tabs.vue';
 import recordTypeList from '@/constants/recordTypeList';
 import dayjs from 'dayjs';
 import clone from '@/lib/clone';
+import Chart from '@/components/Chart.vue'
 
 @Component({
-  components: {Tabs},
+  components: {Tabs, Chart},
 })
 export default class Statistics extends Vue {
   tagString(tags: Tag[]) {
-    return tags.length === 0 ? '无' : tags.map(t=>t.name).join('/');
+    return tags.length === 0 ? '无' :
+        tags.map(t=>t.name).join('/');
   }
 
   beautify(string: string) {
@@ -52,6 +55,33 @@ export default class Statistics extends Vue {
       return day.format('YYYY年 MM月DD日');
     }
   }
+  get x(){
+    return {
+      xAxis: {
+        type: 'category',
+        data: [
+          '1', '2', '3', '4', '5', '6', '7','8', '9', '10',
+          '11', '12', '13', '14', '15', '16', '17','18', '19', '20',
+          '21', '22', '23', '24', '25', '26', '27','28', '29', '30',
+          '31'
+        ]
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+        data: [
+          820, 932, 901, 934, 1290, 1330, 1320,
+          820, 932, 901, 934, 1290, 1330, 1320,
+          820, 932, 901, 934, 1290, 1330, 1320,
+          820, 932, 901, 934, 1290, 1330, 1320, 100, 200
+        ],
+        type: 'line'
+      }],
+      tooltip: {show: true}
+    }
+  }
+
 
   get recordList() {
     return (this.$store.state as RootState).recordList;
@@ -64,8 +94,8 @@ export default class Statistics extends Vue {
         .filter(r => r.type === this.type)
         .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
     if (newList.length === 0) {return [];}
-    type Result = { title: string, total?: number, items: RecordItem[] }[]
-    const result:Result = [{title: dayjs(newList[0].createdAt).format('YYYY-MM-DD'), items: [newList[0]]}];
+    type Result = { title: string; total?: number; items: RecordItem[] }[]
+    const result: Result = [{title: dayjs(newList[0].createdAt).format('YYYY-MM-DD'), items: [newList[0]]}];
     for(let i=1; i<newList.length; i++){
       const current = newList[i];
       const last = result[result.length - 1];
@@ -92,6 +122,10 @@ export default class Statistics extends Vue {
 
 
 <style scoped lang="scss">
+.echarts{
+  max-width: 100%;
+  height: 400px
+}
 .noResult{
   padding: 16px;
   text-align: center;
