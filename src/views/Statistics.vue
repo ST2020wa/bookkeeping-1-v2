@@ -44,6 +44,7 @@ export default class Statistics extends Vue {
         tags.map(t=>t.name).join('/');
   }
   mounted(){
+    console.log(this.groupedList);
     const div = (this.$refs.chartWrapper as HTMLDivElement);
     div.scrollLeft = div.scrollWidth;
   }
@@ -67,15 +68,16 @@ export default class Statistics extends Vue {
   get keyValueList(){
     const today = new Date()
     const array = []
+    console.log(this.groupedList)
     for(let i=0; i<= 29; i++){
       //  this.recordList = [{date: 7.3, value: 100}, {date: 7.2, value: 200}]
       const dateString = day(today)
           .subtract(i, 'day').format('YYYY-MM-DD')
-      const found = _.find(this.recordList, {
-        createdAt: dateString
+      const found = _.find(this.groupedList, {
+        title: dateString
       })
       array.push( {
-        key: dateString, value: found ? found.amount : 0
+        key: dateString, value: found ? found.total : 0
       })
     }
     array.sort(
