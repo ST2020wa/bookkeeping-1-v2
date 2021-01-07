@@ -1,9 +1,9 @@
 <template>
-  <ul class="tabs" :class="{[classPrefix+'-tabs']: classPrefix}">
-    <li v-for="item in dataSource" :key="item.value" class="tabs-item"
-        :class="liClass(item)" @click="select(item)">{{item.text}}
-    </li>
-  </ul>
+    <ul class="tabs" :class="{[classPrefix+'-tabs']: classPrefix}">
+      <li v-for="item in dataSource" :key="item.value" class="tabs-item"
+          :class="liClass(item)" @click="select(item)">{{item.text}}
+      </li>
+    </ul>
 </template>
 
 <script lang="ts">
@@ -36,14 +36,20 @@ export default class Tabs extends Vue {
 </script>
 
 <style lang="scss" scoped>
+$bg: #f2f2f2;
+template{
+  border: 1px solid red;
+}
  .tabs {
-   background: #c4c4c4;
+   width: 75%;
    display: flex;
    text-align: center;
+   margin: 0 auto;
    font-size: 20px;
+   background: $bg;
 
-  &-item {
-    width: 50%;
+   &-item {
+     width: 50%;
     height: 48px;
     display: flex;
     justify-content: center;
@@ -56,8 +62,9 @@ export default class Tabs extends Vue {
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 4px;
-      background: #333333;
+      height: 48px;
+      border-radius: 48px;
+      background: rgb(124,84,255,0.25);
     }
   }
 }
