@@ -9,7 +9,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
-type DataSourceItem = { text: string, value: string }
+type DataSourceItem = { text: string; value: string }
 
 @Component
 export default class Tabs extends Vue {
@@ -37,14 +37,14 @@ export default class Tabs extends Vue {
 
 <style lang="scss" scoped>
  .tabs {
-  background: #c4c4c4;
-  display: flex;
-  text-align: center;
-  font-size: 24px;
+   background: #c4c4c4;
+   display: flex;
+   text-align: center;
+   font-size: 20px;
 
   &-item {
     width: 50%;
-    height: 64px;
+    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;

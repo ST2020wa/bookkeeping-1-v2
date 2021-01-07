@@ -34,7 +34,7 @@ export default class FormItem extends Vue {
   onValueChanged(value: string) {
     this.$emit('update:value', value);
   }
-  x(isoString:string){
+  x(isoString: string){
     return dayjs(isoString).format('YYYY-MM-DD')
   }
 }
@@ -43,7 +43,6 @@ export default class FormItem extends Vue {
 <style lang="scss" scoped>
 .formItem {
   font-size: 14px;
-  display: block;
   padding: 0 16px;
   display: flex;
   align-items: center;

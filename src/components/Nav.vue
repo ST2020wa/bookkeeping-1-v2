@@ -2,7 +2,7 @@
   <nav>
     <router-link to="/labels" class="item" active-class="selected">
       <Icon name="label"/>
-      标签
+      分类
     </router-link>
     <router-link to="/money" class="item" active-class="selected">
       <Icon name="money"/>
@@ -30,8 +30,8 @@ nav {
   flex-direction: row;
   font-size: 12px;
   > .item{
-    padding: 2px 0;
-    width: 33.33333%;
+    padding: 6px 0 2px;
+    width: 33.3333333%;
     display: flex;
     justify-content: center;
     align-items: center;
