@@ -15,12 +15,12 @@ const routes: Array<RouteConfig> = [
         component: Money
     },
     {
-        path: '/money',
-        component: Money
-    },
-    {
         path: '/labels',
         component: Labels
+    },
+    {
+        path: '/money',
+        component: Money
     },
     {
         path: '/statistics',
