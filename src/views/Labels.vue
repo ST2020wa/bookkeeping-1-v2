@@ -3,7 +3,7 @@
     <div class="tags">
       <router-link class="tag" v-for="tag in tags" :key="tag.id"
                    :to="`/labels/edit/${tag.id}`">
-        <span>{{ tag.name }}</span>
+        <span>{{ '〇 ' + tag.name }}</span>
         <Icon name="right"/>
       </router-link>
     </div>
@@ -24,7 +24,6 @@ import Button from '@/components/Button.vue';
 import {mixins} from 'vue-class-component';
 import TagHelper from '@/mixins/TagHelper';
 
-
 @Component({
   components: {Button},
 })
@@ -35,10 +34,12 @@ export default class Labels extends mixins(TagHelper) {
   beforeCreate() {
     this.$store.commit('fetchTags');
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper.scss";
+
 .tags {
   background: white;
   font-size: 16px;
@@ -61,9 +62,9 @@ export default class Labels extends mixins(TagHelper) {
 }
 
 .createTag {
-  background: #767676;
+  background: $color-highlight;
   color: white;
-  border-radius: 4px;
+  border-radius: 40px;
   border: none;
   height: 40px;
   padding: 0 16px;

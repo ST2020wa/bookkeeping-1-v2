@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-const map: { [key: string]:string } = {
-    'tag name duplicated':'标签名重复了>_<～'
+const map: { [key: string]: string } = {
+    'tag name duplicated':'标签名重复啦>_<'
 }
 
 @Component
@@ -16,6 +16,7 @@ export class TagHelper extends Vue {
         if (this.$store.state.createTagError) {
             window.alert(map[this.$store.state.createTagError.message] || '未知错误');
         }
+        const tagColor = window.prompt('请选择分类颜色');
     }
 }
 
