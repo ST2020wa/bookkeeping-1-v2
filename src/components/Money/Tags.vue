@@ -43,6 +43,8 @@ export default class Tags extends mixins(TagHelper) {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper.scss";
+
 .tags {
   font-size: 14px;
   padding: 16px;
@@ -56,8 +58,7 @@ export default class Tags extends mixins(TagHelper) {
     flex-wrap: wrap;
 
     > li {
-      $bg: #d9d9d9;
-      background: $bg;
+      background: $bg-light;
       $h: 24px;
       height: $h;
       line-height: $h;
@@ -67,8 +68,9 @@ export default class Tags extends mixins(TagHelper) {
       margin-top: 4px;
 
       &.selected {
-        background: darken($bg, 50%);
+        background: $color-highlight;
         color: white;
+        font-weight: 600;
       }
     }
   }
@@ -76,12 +78,11 @@ export default class Tags extends mixins(TagHelper) {
   > .new {
     padding-top: 15px;
     text-align: left;
-
     button {
       background: transparent;
       border: none;
-      color: #999;
-      border-bottom: 1px solid;
+      color: $semi-highlight;
+      border-bottom: 1px solid $semi-highlight;
       padding: 0 4px;
     }
   }
