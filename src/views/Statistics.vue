@@ -169,6 +169,8 @@ export default class Statistics extends Vue {
 
 
 <style scoped lang="scss">
+$bg-light: #f3f2f2;
+
 .echarts{
   max-width: 100%;
   height: 400px
@@ -212,11 +214,12 @@ export default class Statistics extends Vue {
 
 ::v-deep {
   .type-tabs-item {
-    background: #c4c4c4;
+    background: $bg-light;
     &.selected {
-      background: white;
+      background: $bg-light;
       &::after {
-        display: none;
+        background: rgb(124,84,255,0.25);
+        //display: none;
       }
     }
   }
