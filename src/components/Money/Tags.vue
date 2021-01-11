@@ -3,6 +3,7 @@
     <div class="new">
       <button @click="createTag">新增分类</button>
     </div>
+
     <ul class="current">
       <li v-for="tag in tagList" :key="tag.id"
           :class="{selected: selectedTags.indexOf(tag)>=0}"
@@ -56,6 +57,7 @@ export default class Tags extends mixins(TagHelper) {
   > .current {
     display: flex;
     flex-wrap: wrap;
+    cursor: cell;
 
     > li {
       background: $bg-light;
@@ -84,7 +86,9 @@ export default class Tags extends mixins(TagHelper) {
       color: $semi-highlight;
       border-bottom: 1px solid $semi-highlight;
       padding: 0 4px;
+      cursor: cell;
     }
   }
 }
+
 </style>

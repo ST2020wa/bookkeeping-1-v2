@@ -16,8 +16,6 @@ export class TagHelper extends Vue {
         if (this.$store.state.createTagError) {
             window.alert(map[this.$store.state.createTagError.message] || '未知错误');
         }
-        //const color = window.prompt('请选择分类颜色');
-        //this.$store.commit('createTag', name);
     }
 }
 
