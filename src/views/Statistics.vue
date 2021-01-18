@@ -169,8 +169,7 @@ export default class Statistics extends Vue {
 
 
 <style scoped lang="scss">
-$bg-light: #f3f2f2;
-
+@import "~@/assets/style/helper.scss";
 .echarts{
   max-width: 100%;
   height: 400px
@@ -199,7 +198,8 @@ $bg-light: #f3f2f2;
 .notes {
   margin-right: auto;
   margin-left: 16px;
-  color: #999;
+  color: $semi-highlight;
+  font-style: italic;
 }
 
 .chart{
