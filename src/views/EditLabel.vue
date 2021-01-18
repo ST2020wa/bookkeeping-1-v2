@@ -11,7 +11,7 @@
                 field-name="标签名" placeholder="请输入标签名"/>
     </div>
     <div class="button-wrapper">
-      <Button @click="remove">删除标签</Button>
+      <Button @click="remove" class="removeButton">删除标签</Button>
     </div>
   </Layout>
 </template>
@@ -61,6 +61,7 @@ export default class EditLabel extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper.scss";
 .navBar {
   text-align: center;
   font-size: 16px;
@@ -89,9 +90,12 @@ export default class EditLabel extends Vue {
   margin-top: 8px;
 }
 
-.button-wrapper {
-  text-align: center;
-  padding: 16px;
-  margin-top: 44-16px;
+.removeButton {
+    background: $semi-highlight;
+    color: white;
+    border-radius: 40px;
+    height: 40px;
+    text-align: center;
+    margin-top: 44-16px;
 }
 </style>

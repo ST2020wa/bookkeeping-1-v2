@@ -3,7 +3,7 @@
     <div class="tags">
       <router-link class="tag" v-for="tag in tags" :key="tag.id"
                    :to="`/labels/edit/${tag.id}`">
-        <span>{{ '〇 ' + tag.name }}</span>
+        <span>{{ ' ' + tag.name }}</span>
         <Icon name="right"/>
       </router-link>
     </div>
